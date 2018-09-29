@@ -95,3 +95,64 @@ printf()).
 ссылке.
 
 До новых встреч.
+
+
+/*
+ * Functions.c
+ *
+ *  Created on: 31 мая 2017 г.
+ *      Author: ivanovcinnikov
+ */
+#include <stdio.h>
+// copypasted all code from header
+#include "header.h"
+
+int sum(int x, int y) {
+	int result = x + y;
+	return result;
+}
+
+int isPrime(int number);
+
+//void somefunction(); //prototype
+int main (int argc, const char* argv[]) {
+	// more operations here
+	int a;
+	printf("Enter a number");
+	scanf("%d", &a);
+	printf("%d\n", sum(50, a));
+
+	int num = 73;
+	printf("Введённое число %d %sявляется простым \n", num, isPrime(num) ? "" : "не ");
+
+
+	return 0;
+}
+
+
+/*
+ * header.h
+ *
+ *  Created on: 31 мая 2017 г.
+ *      Author: ivanovcinnikov
+ */
+
+#ifndef HEADER_H_
+#define HEADER_H_
+
+int isPrime (int number) {
+	int d = 0, i = 1;
+		while (i <= number) {
+			if (number % i++ == 0)
+				d++;
+			else
+				continue;
+			if (d == 3) return 0;
+		}
+//		if(d == 2) return 1; else return 0;
+//		return (d == 2) ? 1 : 0;
+		return (d == 2);
+}
+
+
+#endif /* HEADER_H_ */
