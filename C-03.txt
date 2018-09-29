@@ -110,3 +110,89 @@ printf("a = %d, b = %d", a, b);
 Бинарная алгебра это большая и сложная тема. Применять бинарную алгебру можно и в
 высокоуровневых проектах, поддержка бинарных операций есть в подавляющем числе языков
 программирования.
+
+
+/*
+ * Terms.c
+ *
+ *  Created on: 27 мая 2017 г.
+ *      Author: ivanovcinnikov
+ */
+#include <stdio.h>
+
+int main(int argc, const char* argv[]) {
+	char answer;
+/*
+	printf("Do you want me to salute you? (y/n)");
+	scanf("%c", &answer);
+	if(answer == 'y') {
+		printf("Hello, user!");
+	} else if(answer == 'n') {
+		printf("I didn't want to salute you anyway!");
+	} else {
+		printf("I can't understand your input!");
+	}
+*/
+/*	int a = 10;
+	int b = 15;
+
+	a = (a > b) ? b : 0;
+	if (a > b)
+		a = b;
+	else
+		a = 0;
+*/
+	printf("\n%s", (1>0) ? "true" : "false");
+
+	// > < >= <= ==
+	// && || ! ^
+	if (1 && 0) printf("false");
+	if (1 || 0) printf("true");
+	if (!(1)) printf("false");
+	if (1 ^ 1) printf("false");
+/*
+	if (1) {
+		if (1){
+			//...
+		}
+	}
+*/
+	printf("\n");
+	int x = 7;
+	if ((x >= 0) && (x <= 10)) {
+		printf("X Fits!");
+	}
+	// Boolean Algebra
+	printf("\n");
+	// & | ! ^ << >>
+	/*
+	 * 1 & 0 = 0
+	 * 1 | 0 = 1
+	 * 0 ^ 1 = 1
+	 * !1 = 0
+	 */
+	char a = 11;
+	char b = 15;
+	printf("a = %d, b = %d\n", a, b);
+	a = a ^ b;				// a = 00000100
+	// a = 11 (00001011)
+	// b = 15 (00001111)
+	// a ^ b = 00000100
+	b = b ^ a;				// b = 00001011
+	// b = 15 (00001111)
+	// a = 4	  (00000100)
+	// a ^ b = 00001011
+	a = a ^ b;				// a = 00001111
+	// a = 4  (00000100)
+	// b = 11 (00001011)
+	// a ^ b = 00001111
+	printf("a = %d, b = %d\n", a, b);
+
+	a = a << 3;	// 15 * 8
+	b = b >> 2; // 11 / 4
+
+	printf("a = %d, b = %d", a, b);
+
+
+	return 0;
+}
