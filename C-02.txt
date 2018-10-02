@@ -188,3 +188,25 @@ int main (int argc, const char* argv[]) {
 
 	return 0;
 }
+
+
+### Домашнее задание ###
+/*
+ * 1. Математика.
+ *    Есть формула (расчёта резисторного делителя) Uo = Ui * (R1 / (R2 + R1)).
+ *    Напишите формулы расчёта каждой переменной по отдельности, в формате:
+ *    Ui = ...;
+ *    R1 = ...;
+ *    R2 = ...;
+ */
+void work_number_one() {
+	// 1. Maths. Uo = Ui * (R1 / (R2 + R1))
+	int Ui;
+	int Uo;
+	int R1;
+	int R2;
+	// scanf any three variables and get the fourth
+	//Ui = Uo * (R1 + R2) / R1;
+	//R1 = R2 * Uo / (Ui - Uo);
+	//R2 = (Ui - Uo) * R1 / Uo;
+}

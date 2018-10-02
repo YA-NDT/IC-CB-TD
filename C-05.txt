@@ -286,3 +286,28 @@ int multiple_main() {
 
 	return 0;
 }
+
+
+### Домашнее задание ###
+/*
+ * 4. *.
+ *    Запросить у пользователя количество используемых для вывода строк.
+ *    Написать программу, которая при помощи циклов и символа ^ будет рисовать
+ *    на указанном количестве строк равнобедренный треугольник.
+ */
+void work_number_one() {
+	// 4. Starred triangle
+	int lines;
+	printf("Enter number of lines: ");
+	scanf("%d", &lines);
+	int j;
+	for (i = 0; i < lines; i++) {
+		for (j = 1; j < lines - i; j++)
+			printf(" ");
+
+		for (j = lines - i * 2; j <= lines; j++)
+			printf("^");
+
+		printf("\n");
+	}
+}
