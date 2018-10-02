@@ -42,3 +42,23 @@
 сортировки, ожидание ответов на запросы, чтение потоков данных и многие другие.
 
 До встречи на следующем уроке.
+
+
+### Домашнее задание ###
+/*
+ * 3. Циклы.
+ * Запросить у пользователя десять чисел. Вывести на экран среднее арифметическое
+ * введённых чисел.
+ */
+void work_number_one() {
+	// 3. Cycles mean()
+	const int NUMS_TO_ASK = 10;
+	int i = 0;
+	float total = 0;
+	do {
+		printf("Enter a number: ");
+		scanf("%d", &input);
+		total += input;
+	} while (++i < NUMS_TO_ASK);
+	printf("The mean of entered numbers is: %.2f\n", total / i);
+}
