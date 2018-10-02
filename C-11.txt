@@ -157,3 +157,38 @@ int main (int argc, const char* argv[]) {
 
 	return 0;
 }
+
+
+### Домашнее задание ###
+/*
+ * 1. Строки.
+ *    Описать функцию, возвращающую строку с двоичным представлением десятичного числа,
+ *    переданного в аргументе этой функции.
+ */
+void decToBin(int in, char* result) {
+	char out[64];
+	int i = 0;
+	int temp = in;
+	while (temp != 0) {
+		temp = temp >> 1;
+		i++;
+	}
+	out[i] = '\0';
+	while (in > 0) {
+		out [--i] = (in % 2) ? '1' : '0';
+		in /= 2;
+	}
+	strcat (result, out);
+}
+
+void work_number_three() {
+	// 1. Strings decToBin()
+	char bin[64] = "b'";
+	int number;
+
+	printf("Please, enter a number to convert:");
+	scanf("%d", &number);
+
+	decToBin(number, bin);
+	printf("Your number in binary is: %s\n", bin);
+}
