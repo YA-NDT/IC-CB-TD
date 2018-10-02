@@ -196,3 +196,27 @@ int main(int argc, const char* argv[]) {
 
 	return 0;
 }
+
+
+### Домашнее задание ###
+/*
+ * 2. Условия.
+ *    Запросить у пользователя любое целое число. Написать программу которая проверит,
+ *    входит ли введённое число в диапазон (например, от 0 до 100, включительно) и
+ *    выведет на экран сообщение о результате проверки.
+ */
+void work_number_one() {
+	// 2. Terms 0..100
+	const int RANGE_MIN = 0;
+	const int RANGE_MAX = 100;
+	int input;
+	printf("Enter a number: ");
+	scanf("%d", &input);
+	printf("Your number '%d' %sfit the range of (%d to %d)\n",
+			input,
+			(input >= RANGE_MIN && input <= RANGE_MAX) ? "" : "does not ",
+			RANGE_MIN,
+			RANGE_MAX
+		);
+
+}
