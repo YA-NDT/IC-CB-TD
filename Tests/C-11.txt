@@ -14,11 +14,11 @@ C-11:
 Ответ - д
 
 2. Выберите корректные способы инициализации строк:
-	а. string string = "Hello World!";
-	б. char string[255] = "Hello World!";
-	в. string string[] =  "Hello World!";
-	г. char* string = "Hello World!";
-	д. char string[] = {Hello World!};
+	а. string str = "Hello World!";
+	б. char str[255] = "Hello World!";
+	в. string str[] =  "Hello World!";
+	г. char* str = "Hello World!";
+	д. char str[] = {Hello World!};
 
 Ответ - б, г
 
@@ -27,6 +27,6 @@ C-11:
 	б. string.h
 	в. strlib.h
 	г. charlib.h
-	д. basetyp.h
+	д. stdio.h
 
 Ответ - б

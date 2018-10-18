@@ -14,7 +14,7 @@ C-12:
 
 2. Для описания структур используется следующее ключевое слово:
 	а. structure
-	б. typeder
+	б. typedef
 	в. define
 	г. struct
 	д. set
@@ -27,12 +27,12 @@ C-12:
 		int a;
 		int b;
 		int c;
-	};
+	} simpleStruct;
 
 	б.
 	struct struct2 {
 		char ch;
-		struct struct1;
+		struct struct1 s;
 	};
 
 	в.
@@ -46,8 +46,8 @@ C-12:
 	struct struct4 {
 		float f;
 		struct struct3;
-	} simpleStruct;
+	};
 
 	д. ни один из вышеперечисленных вариантов
 
-Ответ - а, б, в, г
+Ответ - а, б
