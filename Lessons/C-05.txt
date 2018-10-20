@@ -1,0 +1,313 @@
+Здравствуйте, коллеги, рад вас приветствовать на пятом уроке курса Основы языка С.
+
+На этом занятии мы рассмотрим такие важные операторы, как break и continue, цикл for и
+оператор множественного выбора switch.
+
+Сегодня мы напишем программу, которая будет определять, является-ли введённое
+пользователем число простым, и пару функций из математической библиотеки, на случай если
+не захочется искать её, а использовать нужно.
+
+Что такое простое число? Это такое число, которое имеет ровно два делителя с целочисленным
+результатом - единицу и само себя.
+
+int main(int argc, char *argv[])
+{
+	int number;					// заведём переменную
+	int d = 0, i = 1;			// объявим ещё переменных
+
+	printf("Input number:");	// спросим у пользователя
+	scanf("%d", &number);		// запишем в переменную
+
+	while (i <= number)			// пробежим от 1 до числа
+	{
+		if (number% i++ == 0)	// если / без остатка
+		{
+			d++;				// делитель++
+		}
+		else
+		{					// иначе
+			continue;			// ничего не надо проверять
+		}
+
+		if (d == 3)				// если делителей уже 3
+		{
+			break;				// выйти из цикла
+		}
+	}
+
+	printf("Number %d is%s simple", number, (d==2) ? ”” : ” not”);
+
+	return 0;					// проверили и сказали
+}
+
+Оператор continue нужен для того, чтобы программа проигнорировала оставшиеся действия на
+текущей итерации цикла, часто используется для отбрасывания неподходящих значений в
+больших наборах данных, как в нашем случае, например, нам не нужно выполнять никаких
+действий и проверок, если переменная d не изменилась. Оператор continue просто напросто
+передаёт управление логической конструкции цикла.
+
+Оператор break используется для того, чтобы выйти за пределы цикла, то есть мы сразу
+попадаем к следующему после цикла оператору, без передачи управления логической
+конструкции. То есть, очевидно, например, что когда делителей стало три - число точно не
+простое.
+После выхода из цикла - проверим, если делителей действительно два - выведем пользователю
+сообщение о том, что число простое. в противном случае, добавим в наше сообщение частицу
+“не”.
+
+
+Цикл for.
+
+Зачастую, складываются ситуации, когда мы точно знаем, сколько итераций цикла нам
+понадобится, например, когда мы последовательно проверяем содержимое созданного нами
+числового ряда, или заполняем значениями таблицы, границы которых заранее известны. В
+конце концов, для подсчёта среднего арифметического. В этих ситуациях принято использовать
+цикл for.
+
+Это цикл с предусловием, где заранее отведено место для инициализации
+переменной-счётчика и её увеличения. Язык С не предоставляет оператора возведения в
+степень по умолчанию, как это делают языки высокого уровня, поэтому для этой
+математической операции нам нужно подключать специальную математическую библиотеку. Но я
+считаю это излишним, ведь не так уж и сложно написать собственную программу, которая-бы
+делала это. Как известно, возведение в степень это последовательное умножение основания на
+само себя указанное количество раз. А раз заранее известно сколько раз мы будем умножать
+основание само на себя, это работа для цикла for.
+
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+	// заведём переменные для исходных данных
+	int base;													// основание
+	int significative;											// показатель
+	int result = 1;												// опишем переменную для
+	int i;														// результата и счётчика
+
+	// спросим их значения у пользователя
+	printf("Enter base: "); scanf("%d", &base);
+	printf("Enter significative: "); scanf("%d", &significative);
+
+	for(i = 0; i < significative; i++)
+	{
+		// умножим нужное количество раз и положим результат в переменную
+		result *= base;
+	}
+
+	printf("Result is: %d \n", result);
+
+	return 0;													// выведем результат
+}
+
+
+Оператор выбора.
+
+В качестве бонуса сегодняшнего урока мы поговорим об операторе множественного выбора
+switch. Тем более, что теперь мы обладаем всеми необходимыми для этого знаниями. Оператор
+множественного выбора используется когда мы хотим описать действия для какого-то
+ограниченного количества условий. В отличие от оператора if который может использоваться
+также и для проверки диапазонов значений. Удобство применения того или иного оператора,
+естественно, зависит от задачи. Для примера, напишем свой собственный маленький
+калькулятор:
+
+#include <stdio.h>
+
+int main( int argc, char *argv[])
+{
+	float first;
+	float second;
+	int operator;
+	float result;
+
+	printf("Enter first operand: "); scanf("%f", &first);
+	printf("Enter 1 for +, 2 for -, 3 for *, 4 for / "); scanf("%d", &operator);
+
+	if(operator == 4)
+	{
+		do {
+			printf("Enter second operand: ");
+			scanf("%f", &second);
+		} while (second == 0);
+	}
+	else
+	{
+		printf("Enter second operand: "); scanf("%f", &second);
+	}
+
+	switch(operator) {
+	case 1:
+		result = first + second;
+		printf("Result is: %f \n", result);
+		break;
+	case 2:
+		result = first - second;
+		printf("Result is: %f \n", result);
+		break;
+	case 3:
+		result = first * second;
+		printf("Result is: %f \n", result);
+		break;
+	case 4:
+		result = first / second;
+		printf("Result is: %f \n", result);
+		break;
+	default:
+		printf("Unknown operator");
+	}
+
+	return 0;
+}
+
+Оператор switch последовательно проверит входящую переменную на соответствие описанным в
+кейсах значениях. В случае, если значение совпадёт, будет выполнен блок кода до оператора
+break, если же значение переменной не совпадёт ни с одним из описанный в кейсах,
+выполнится блок по умолчанию default.
+
+Важно помнить, что в случае отсутствия в case оператора break, программа будет выполнять
+последующие операторы, пока не найдёт break или пока не закончится конструкция switch, то
+есть пока не встретится закрывающая фигурная скобка.
+
+На основе этого кода можно описать любые виды меню, описать поведение программ, которые
+должны опираться на получаемые извне команды или описывать конечные автоматы.
+
+На следующем уроке мы наконец-то подробно поговорим о функциях и заголовочных файлах, до
+новых встреч.
+
+Думали это всё? А вот и нет.
+
+
+/*
+ * Cycles.c
+ *
+ *  Created on: 27 мая 2017 г.
+ *      Author: ivanovcinnikov
+ */
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, const char* argv[]) {
+	int a = 10;
+	int b = 20;
+	int even = 0;
+	while (a < b) {
+		if (a % 2 == 0)
+			even++;
+		a++;
+	}
+	printf("There are %d even numbers in sequence \n", even);
+/*
+	int input;
+	do {
+		printf("Enter a divider for 100 (remember, that you can't divide by zero)\n");
+		scanf("%d", &input);
+	} while (input == 0);
+
+	printf("100 / %d = %d\n", input, 100 / input);
+	printf("and the remainder will be %d, by the way", 100 % input);
+*/
+	int number = 71;
+	printf("Input a number, please");
+//	scanf("%d", &number);
+	printf("\n");
+	int d = 0, i = 1;
+	while (i <= number) {
+		if (number % i++ == 0)
+			d++;
+		else
+			continue;
+
+		if (d == 3) break;
+	}
+	printf("Введённое число %d %sявляется простым \n", number, (d==2) ? "" : "не ");
+
+	int significative = 10;
+	int base = 2;
+	int result = 1;
+	for (i = 0; i < significative; i++) {
+		result *= base;
+	}
+	printf("%d powered by %d is %d \n", base, significative, result);
+
+	multiple_main();
+
+	return 0;
+}
+
+
+/*
+ * MultipleChoices.c
+ *
+ *  Created on: 31 мая 2017 г.
+ *      Author: ivanovcinnikov
+ */
+#include <stdio.h>
+
+int multiple_main() {
+	float first;
+	float second;
+	int operator;
+	printf("enter first operand: ");
+	scanf("%f", &first);
+	printf("\nenter 1 for +, 2 for -, 3 for *, 4 for / operations: ");
+	scanf("%d", &operator);
+	if (operator == 4) {
+		do {
+			printf("\nenter second operand: ");
+			scanf("%f", &second);
+		} while (second == 0);
+	} else {
+		printf("\nenter second operand: ");
+		scanf("%f", &second);
+	}
+	float result;
+	char c;
+	switch (operator) {
+		case 1:
+			c = '+';
+			result = first + second;
+			printf("%f %c %f = %f", first, c , second, result);
+			break;
+		case 2:
+			c = '-';
+			result = first - second;
+			printf("%f %c %f = %f", first, c , second, result);
+			break;
+		case 3:
+			c = '*';
+			result = first * second;
+			printf("%f %c %f = %f", first, c , second, result);
+			break;
+		case 4:
+			c = '/';
+			result = first / second;
+			printf("%f %c %f = %f", first, c , second, result);
+			break;
+		default:
+			printf("Unknown operation!");
+	}
+
+	return 0;
+}
+
+
+### Домашнее задание ###
+/*
+ * 4. *.
+ *    Запросить у пользователя количество используемых для вывода строк.
+ *    Написать программу, которая при помощи циклов и символа ^ будет рисовать
+ *    на указанном количестве строк равнобедренный треугольник.
+ */
+void work_number_one() {
+	// 4. Starred triangle
+	int lines;
+	printf("Enter number of lines: ");
+	scanf("%d", &lines);
+	int j;
+	for (i = 0; i < lines; i++) {
+		for (j = 1; j < lines - i; j++)
+			printf(" ");
+
+		for (j = lines - i * 2; j <= lines; j++)
+			printf("^");
+
+		printf("\n");
+	}
+}
